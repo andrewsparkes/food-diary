@@ -4,7 +4,7 @@ namespace :testcode do
   unless Rails.env == 'production'
     require 'rspec/core/rake_task'
     require 'rubocop/rake_task'
-    require 'reek/rake/task'
+    #require 'reek/rake/task'
 
     desc 'Execute Rspec'
     RSpec::Core::RakeTask.new(:spec) do |tsk|
@@ -17,23 +17,23 @@ namespace :testcode do
       tsk.fail_on_error = false
     end
 
-    desc 'Execute reek'
-    Reek::Rake::Task.new do |tsk|
-      tsk.source_files = [
-        'app/**/*.rb',
-        'lib/**/*.rb',
-        'lib/tasks/*.rake',
-        'config/**/*.rb'
-      ]
-      tsk.fail_on_error = false
-      # tsk.verbose = true
-    end
+    #desc 'Execute reek'
+    #Reek::Rake::Task.new do |tsk|
+    #  tsk.source_files = [
+    #    'app/**/*.rb',
+    #    'lib/**/*.rb',
+    #    'lib/tasks/*.rake',
+    #    'config/**/*.rb'
+    #  ]
+    #  tsk.fail_on_error = false
+    #  # tsk.verbose = true
+    #end
 
-    desc 'Execute haml-lint'
-    task haml_lint: :environment do
-      puts 'HAML-LINT'
-      puts `haml-lint .`
-    end
+    #desc 'Execute haml-lint'
+    #task haml_lint: :environment do
+    #  puts 'HAML-LINT'
+    #  puts `haml-lint .`
+    #end
 
     desc 'Execute rails_best_practices'
     task rbp: :environment do

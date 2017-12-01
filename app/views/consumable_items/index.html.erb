@@ -1,0 +1,22 @@
+<h1>Listing Consumable Items</h1>
+
+<%= link_to 'Create a new consumable item...', new_consumable_item_path %>
+</br>
+</br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Calories</th>
+    <th>Notes</th>
+    <th>Display</th>
+  </tr>
+ 
+  <% @consumable_items.each do |consumable_item| %>
+    <tr>
+      <td><%= consumable_item.name %></td>
+      <td><%= consumable_item.approx_calories %></td>
+      <td><%= consumable_item.notes %></td>
+      <td><%= link_to 'Show', consumable_item_path(consumable_item) %></td>
+    </tr>
+  <% end %>
+</table>

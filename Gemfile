@@ -8,6 +8,7 @@ source 'https://rubygems.org'
 ## Turbolinks makes navigating your web application faster.
 ## Read more: https://github.com/turbolinks/turbolinks
 #gem 'turbolinks', '~> 5'
+
 ## Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 2.5'
 #
@@ -33,6 +34,10 @@ source 'https://rubygems.org'
 
 group :default do
   gem 'rails', '~> 5.1.4'
+
+  # Turbolinks makes navigating your web application faster.
+  # Read more: https://github.com/turbolinks/turbolinks
+  gem 'turbolinks', '~> 5'
 
   # AASM is a library for adding finite state machines to Ruby classes.
   # It currently provides adapters for ActiveRecord, and Mongoid but it can be
