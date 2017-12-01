@@ -1,0 +1,78 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRubyVersion: 2.4
+  Include:
+    - Rakefile
+    - config.ru
+    - lib/**/*.rake
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - db/views_schema.rb
+    - db/archived_migrations/*
+    - vendor/**/*
+# The cop is meant to enforce conventions regarding variables containing numbers
+# However in 0.43.0 it is bugged. Both changed on master and disabled by default
+# The exclusions don't even get added to the rubocop_todo properly!
+Naming/VariableNumber:
+  Enabled: false
+Rails:
+  Enabled: true
+# Step definitions are defined with Given /regex/ do ...
+# There is little ambiguity here, and brackets just break convention
+#Lint/AmbiguousRegexpLiteral:
+#  Exclude:
+#    - features/support/step_definitions/**/*
+# These steps are explicitly designed for debugging. In general usage, they wont
+# be used.
+#Lint/Debugger:
+#  Exclude:
+#    - 'features/support/step_definitions/debug_steps.rb'
+#    - 'features/support/developing.rb'
+
+# Enforces 1234565789 as 123_456_789: While nice when dealing with actual big
+# numbers, we're more likely to see it shout at us about barcodes.
+Style/NumericLiterals:
+  Enabled: false
+
+# Blocks are used to structure tests and are part of the shoulda dsl.
+# The standard BlockLength limits are too stringent for this purpose.
+# Block DSL is also used in routes
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/testcode.rake'
+    - 'test/**/*'
+    - 'spec/**/*'
+    - 'config/routes.rb'
+
+Metrics/LineLength:
+  # This will disable the rule completely, regardless what other options you put
+  Enabled: true
+  # Change the default char limit value
+  Max: 80
+  # If you want the rule only apply to a specific folder/file
+  #Include:
+  #  - 'app/**/*'
+  # If you want the rule not to apply to a specific folder/file
+  Exclude:
+    - 'application.rb'
+    - 'config/application.rb'
+
+# We have a few custom find_by methods which we maintain.
+# At least for now. find_by_id_or_name is a bit clunky.
+#Rails/DynamicFindBy:
+#
+#  Exclude:
+#    - 'lib/sample_manifest_excel/**/*'
+#    - 'test/lib/sample_manifest_excel/**/*'
+#
+#  Whitelist:
+#    - find_by_sql
+#    - find_by_id_or_name
+#    - find_by_id_or_name!
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+  
+Style/ClassAndModuleChildren:
+  Enabled: false
