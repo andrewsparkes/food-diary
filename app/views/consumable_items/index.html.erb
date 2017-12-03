@@ -1,22 +1,35 @@
-<h1>Listing Consumable Items</h1>
+<p id="notice"><%= notice %></p>
 
-<%= link_to 'Create a new consumable item...', new_consumable_item_path %>
-</br>
-</br>
+<h1>Consumable Items</h1>
+
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Calories</th>
-    <th>Notes</th>
-    <th>Display</th>
-  </tr>
- 
-  <% @consumable_items.each do |consumable_item| %>
+  <thead>
     <tr>
-      <td><%= consumable_item.name %></td>
-      <td><%= consumable_item.approx_calories %></td>
-      <td><%= consumable_item.notes %></td>
-      <td><%= link_to 'Show', consumable_item_path(consumable_item) %></td>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Calories</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @consumable_items.each do |consumable_item| %>
+      <tr>
+        <td><%= consumable_item.name %></td>
+        <td><%= consumable_item.consumable_item_type.name if consumable_item.consumable_item_type %></td>
+        <td><%= consumable_item.approx_calories %></td>
+        <td><%= consumable_item.notes %></td>
+        <td><%= link_to 'Show', consumable_item_path(consumable_item) %></td>
+        <td><%= link_to 'Edit', edit_consumable_item_path(consumable_item) %></td>
+        <td><%= link_to 'Destroy', consumable_item_path(consumable_item),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Consumable Item', new_consumable_item_path %>

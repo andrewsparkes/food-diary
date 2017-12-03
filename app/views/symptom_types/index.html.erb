@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Symptom Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @symptom_types.each do |symptom_type| %>
+      <tr>
+        <td><%= symptom_type.name %></td>
+        <td><%= symptom_type.description %></td>
+        <td><%= link_to 'Show', symptom_type %></td>
+        <td><%= link_to 'Edit', edit_symptom_type_path(symptom_type) %></td>
+        <td><%= link_to 'Destroy', symptom_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Symptom Type', new_symptom_type_path %>

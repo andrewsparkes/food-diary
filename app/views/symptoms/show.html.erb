@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @symptom.name %>
+</p>
+
+<p>
+  <strong>Symptom type:</strong>
+  <%= @symptom.symptom_type.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @symptom.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @symptom.end_time %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @symptom.description %>
+</p>
+
+<%= link_to 'Edit', edit_symptom_path(@symptom) %> |
+<%= link_to 'Back', symptoms_path %>

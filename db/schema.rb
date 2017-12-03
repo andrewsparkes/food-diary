@@ -10,15 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201152023) do
+ActiveRecord::Schema.define(version: 20171204193101) do
+
+  create_table "consumable_item_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_consumable_item_types_on_name", unique: true
+  end
 
   create_table "consumable_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "consumable_item_type_id"
     t.string "name"
     t.integer "approx_calories"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["consumable_item_type_id"], name: "index_consumable_items_on_consumable_item_type_id"
     t.index ["name"], name: "index_consumable_items_on_name", unique: true
   end
 
+  create_table "symptom_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_symptom_types_on_name", unique: true
+  end
+
+  create_table "symptoms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "symptom_type_id"
+    t.string "name"
+    t.timestamp "start_time"
+    t.timestamp "end_time"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_symptoms_on_name", unique: true
+    t.index ["symptom_type_id"], name: "index_symptoms_on_symptom_type_id"
+  end
+
+  add_foreign_key "consumable_items", "consumable_item_types"
+  add_foreign_key "symptoms", "symptom_types"
 end

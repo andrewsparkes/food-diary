@@ -1,0 +1,2 @@
+module SymptomTypesHelper
+end
