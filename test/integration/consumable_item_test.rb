@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class SymptomTypeTest < ActionDispatch::IntegrationTest
+class ConsumableItemTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

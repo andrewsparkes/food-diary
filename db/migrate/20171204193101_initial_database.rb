@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
+# Documentation: Initial migration to create database
 class InitialDatabase < ActiveRecord::Migration[5.1]
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def change
     create_table :consumable_item_types do |t|
       t.string :name
@@ -37,4 +41,5 @@ class InitialDatabase < ActiveRecord::Migration[5.1]
     end
     add_index :symptoms, :name, unique: true
   end
+  # rubocop:enable
 end

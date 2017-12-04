@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Documentation: Controller for Symptoms.
 class SymptomsController < ApplicationController
-  before_action :set_symptom, only: [:show, :edit, :update, :destroy]
+  before_action :set_symptom, only: %i[show edit update destroy]
 
   # GET /symptoms
   def index
@@ -7,8 +10,7 @@ class SymptomsController < ApplicationController
   end
 
   # GET /symptoms/1
-  def show
-  end
+  def show; end
 
   # GET /symptoms/new
   def new
@@ -16,8 +18,7 @@ class SymptomsController < ApplicationController
   end
 
   # GET /symptoms/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /symptoms
   def create
@@ -48,13 +49,18 @@ class SymptomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_symptom
-      @symptom = Symptom.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def symptom_params
-      params.require(:symptom).permit(:name, :start_time, :end_time, :description, :symptom_type_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_symptom
+    @symptom = Symptom.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def symptom_params
+    params.require(:symptom).permit(:name,
+                                    :start_time,
+                                    :end_time,
+                                    :description,
+                                    :symptom_type_id)
+  end
 end
