@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
-  factory :consumable_item_type do
+FactoryBot.define do
+  factory :consumable_item_type, class: ConsumableItemType do
     name 'MyString'
     description 'MyText'
   end

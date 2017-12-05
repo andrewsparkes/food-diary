@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
-  factory :symptom_type do
+FactoryBot.define do
+  factory :symptom_type, class: SymptomType do
     name 'MyString'
-    start_time '2017-12-03 18:21:11'
-    end_time '2017-12-03 18:21:11'
     description 'MyText'
   end
 end

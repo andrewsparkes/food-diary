@@ -344,6 +344,13 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem 'spring','~>1.3.6'
+
+  # factory_bot is a fixtures replacement with a straightforward definition
+  # syntax, support for multiple build strategies (saved instances, unsaved
+  # instances, attribute hashes, and stubbed objects), and support for multiple
+  # factories for the same class (user, admin_user, and so on), including
+  # factory inheritance.
+  gem 'factory_bot_rails', require: false
 end
 
 group :test, :cucumber do
@@ -352,7 +359,7 @@ group :test, :cucumber do
   # instances, attribute hashes, and stubbed objects), and support for multiple
   # factories for the same class (user, admin_user, and so on), including
   # factory inheritance.
-  gem 'factory_girl_rails', require: false
+  #gem 'factory_bot_rails', require: false
 
   # Launchy is helper class for launching cross-platform applications in a fire
   # and forget manner. There are application concepts (browser, email client,
@@ -370,12 +377,12 @@ group :test, :cucumber do
 
   # Shoulda's contexts make it easy to write understandable and maintainable
   # tests for Test::Unit.
-  #gem 'shoulda-context', require: false
+  gem 'shoulda-context', require: false
 
   # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that
   # test common Rails functionality. These tests would otherwise be much
   # longer, more complex, and error-prone.
-  #gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', require: false
 
   # JSONAPI::Resources, or "JR", provides a framework for developing an API
   # server that complies with the JSON:API specification.
