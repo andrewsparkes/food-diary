@@ -3,22 +3,27 @@
 require 'rails_helper'
 
 RSpec.describe ConsumableItemType, type: :model do
-  it "has a valid factory" do
+  it 'has a valid factory' do
     expect(create(:consumable_item_type)).to be_valid
   end
 
-  it "is invalid if the name is not present" do
+  it 'is invalid if the name is not present' do
     expect(build(:consumable_item_type, name: nil)).to_not be_valid
   end
 
-  it "is invalid if the name is too short" do
+  it 'is invalid if the name is too short' do
     expect(build(:consumable_item_type, name: 'Shrt')).to_not be_valid
   end
 
-  it "is valid if the description is not present" do
+  it 'is valid if the description is not present' do
     expect(build(:consumable_item_type, description: nil)).to be_valid
   end
 
+  it 'is invalid for two types to have the same name' do
+    type1 = create(:consumable_item_type, name: 'SameName')
+    type2 = build(:consumable_item_type, name: 'SameName')
+    expect(type2).to_not be_valid
+  end
 end
 
 

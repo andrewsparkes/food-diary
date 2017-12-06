@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20171204193101) do
   create_table "symptoms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "symptom_type_id"
     t.string "name"
-    t.timestamp "start_time"
-    t.timestamp "end_time"
-    t.text "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_symptoms_on_name", unique: true

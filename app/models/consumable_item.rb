@@ -9,6 +9,7 @@ class ConsumableItem < ApplicationRecord
     too_short: ': The minimum length of the name is %{count} characters'
   }
   # rubocop:enable
+  validates :name, uniqueness: true
   validates :consumable_item_type_id, presence: true
   validates :approx_calories, presence: true, numericality: { \
     only_integer: true

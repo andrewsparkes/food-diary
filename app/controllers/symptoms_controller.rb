@@ -60,7 +60,7 @@ class SymptomsController < ApplicationController
     params.require(:symptom).permit(:name,
                                     :start_time,
                                     :end_time,
-                                    :description,
+                                    :notes,
                                     :symptom_type_id)
   end
 end

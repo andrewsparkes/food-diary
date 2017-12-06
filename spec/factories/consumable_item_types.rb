@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :consumable_item_type, class: ConsumableItemType do
-    name 'MyString'
-    description 'MyText'
+    sequence(:name){|n| "A Name#{n}" }
+    description 'My description'
   end
 end

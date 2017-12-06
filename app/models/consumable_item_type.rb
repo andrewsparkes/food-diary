@@ -9,4 +9,5 @@ class ConsumableItemType < ApplicationRecord
     too_short: ': The minimum length of the type name is %{count} characters'
   }
   # rubocop:enable
+  validates :name, uniqueness: true
 end

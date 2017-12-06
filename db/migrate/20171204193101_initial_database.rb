@@ -33,9 +33,9 @@ class InitialDatabase < ActiveRecord::Migration[5.1]
     create_table :symptoms do |t|
       t.references :symptom_type, foreign_key: true
       t.string :name
-      t.timestamp :start_time
-      t.timestamp :end_time
-      t.text :description
+      t.datetime :start_time
+      t.datetime :end_time
+      t.text :notes
 
       t.timestamps
     end

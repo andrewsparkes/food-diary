@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :symptom_type, class: SymptomType do
-    name 'MyString'
-    description 'MyText'
+    sequence(:name){|n| "A Name#{n}" }
+    description 'My description'
   end
 end
